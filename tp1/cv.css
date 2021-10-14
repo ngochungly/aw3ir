@@ -1,9 +1,9 @@
 a:hover {
-    color: orange;
+    color: rgb(3, 160, 74);
 }
 
 body {
-    background-color: #f5f8f7;
+    background-color: #fcfdfc;
     font-family: system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
     font-size: 16px;
     margin: 0 auto;
@@ -46,7 +46,7 @@ tr:nth-child(odd) {
 }
 
 tr:hover {
-    background-color: lightblue;
+    background-color: lightyellow;
 }
 
 #title {
