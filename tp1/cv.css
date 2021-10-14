@@ -15,7 +15,13 @@ h1 {
 }
 
 img:hover {
-    width: 50%;
+    transform: scale(2);
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 @media only screen and (max-width: 1280px) {
