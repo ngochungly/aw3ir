@@ -1,4 +1,4 @@
-<!doctype html>
+<!doctype html lang='fr'>
 <html>
     <head>
         <meta charset="utf-8">
@@ -8,14 +8,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
-        <link rel="stylesheet" href="styles.css" />
         <!-- Place favicon.ico in the root directory -->
         
         <!-- Code à dé-commenter si besoin de fichier CSS ou JS -->
-        <!--<link rel="stylesheet" href="style.css">-->
-        <!--<script src="js/main.js"></script>-->
+        <link rel="stylesheet" href="style.css">
+        <script type="text/javascript" src="formulaire.js"></script>
     </head>
-    <body>
+    <body onload="hideEtatMessage()">
         <!-- Add your site or application content here -->
         <p></p>
         <img src="../galilee.png" alt="Logo Galilee" class="center"/>
@@ -23,7 +22,7 @@
 
         <h1>Saisie d'une fiche "Personne"</h1>
         </br>
-        <form>
+        <form name="formPersonne">
             <table>
                 <tr>
                     <td><label for="nom">Nom</label></td>
@@ -35,7 +34,7 @@
                 </tr>
                 <tr>
                     <td><label for="dateDeNaissance">Date de naissance</label></td>
-                    <td><input type="date" id="dateDeNaissance" name="dateDeNaissance" placeholder="JJ/MM/AAAA"></td>
+                    <td><input type="date" id="dateDeNaissance" name="dateDeNaissance"></td>
                 </tr>
                 <tr>
                     <td><label for="adress">Adress</label></td>
@@ -47,10 +46,13 @@
                 </tr>
                 <tr>
                     <td></td>
-                    <td><input type="button" value="Valider"></td>
+                    <td><input type="button" value="Valider" onclick="validation()"></td>
                 </tr>
             </table>
         </form>
+
+        <div id="error">Tous les champs sont remplis et contiennent au moins 5 caractères</div>
+        <div id="resultat">Bienvenue.</div>
         
         
     </body>
