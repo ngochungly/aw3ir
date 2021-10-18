@@ -15,11 +15,11 @@ function validation() {
 
     if (lengthCheckResult) {
         document.getElementById("error").style.display = "none";
+        document.getElementById("resultat").style.display = "block";
         document.getElementById("resultat").innerHTML = "Bienvenue " + document.querySelector("#nom").value;
-        document.getElementById("resultat").style.display = "inline";
     } else {
         document.getElementById("resultat").style.display = "none";
-        document.getElementById("error").style.display = "inline";
+        document.getElementById("error").style.display = "block";
     }
 }
 
