@@ -20,6 +20,14 @@ body{
     border-width: 1px;
 }
 
+h1 {
+    text-align: center;
+}
+
+img {
+    transform: scale(0.8);
+}
+
 form {
     background-color: #cceeff;
     padding: 10px 10px 10px 10px;
