@@ -30,10 +30,10 @@ function validation() {
     let nom = document.querySelector("#nom").value;
     let prenom = document.querySelector("#prenom").value;
     let dateNaissance = document.querySelector("#dateDeNaissance").value;
-    let adress = document.querySelector("#adress").value;
+    let adresse = document.querySelector("#adresse").value;
     let mail = document.querySelector("#mail").value;
 
-    const champs = [nom, prenom, adress];
+    const champs = [nom, prenom, adresse];
     // Verifier le nombre minimum de caractères
     let lengthCheckResult = champs.every(lengthCheck);
     // Verifier l'adresse mail
@@ -41,11 +41,11 @@ function validation() {
 
     // une notification si le nombre de caractères n'est pas suffisant
     if (!lengthCheckResult) {
-        notification("Erreur!", "Les champs Nom, Prenom et Adress sont remplis et contiennent au moins 5 caractères.");
+        notification("Erreur!", "Les champs Nom, Prenom et Adresse sont remplis et contiennent au moins 5 caractères.");
     } else {
-        // une notification si l'adress mail est incorrecte
+        // une notification si l'adresse mail est incorrecte
         if (!emailCheckResult) {
-            notification("Erreur!", "L'adress mail est incorrecte.");
+            notification("Erreur!", "L'adresse mail est incorrecte.");
         } else {
             // verifier la date de naissance
             if (dateNaissance == "") {
@@ -59,47 +59,32 @@ function validation() {
 
                 if (dateNaissanceTimestamp > nowTimestamp) {
                     notification("Erreur!", "La date de naissance ne peut pas être dans le futur.");
+
                 } else {
-                    // let p1 = document.createElement("p");
-                    // let p1_text = document.createTextNode("Vous êtes nés le " + dateNaissance + " et vous habitez");
-                    // p1.appendChild(p1_text);
-
-                    // // L'image adress vers Google Maps
-                    // let key_api = "AIzaSyAkmvI9DazzG9p77IShsz_Di7-5Qn7zkcg";
-                    // let src_text = "https://maps.googleapis.com/maps/api/staticmap?markers=" + adress + "&zoom=14&size=400x300&scale=2&key=" + key_api;
-                    // let alt_text = "Votre adress ici.";
-                    // let img_html = document.createElement("img");
-                    // img_html.setAttribute("src", src_text);
-                    // img_html.setAttribute("alt", alt_text);
-                    // img_html.style.width = "100%";
-                    // img_html.style.height = "auto";
-
-                    // let p2 = document.createElement("p");
-                    // let p2_text = document.createTextNode(adress);
-                    // p2.appendChild(p2_text);
-
-                    // var myModal = new bootstrap.Modal(document.querySelector("#myModal"));
-                    // document.querySelector("#exampleModalLabel").innerHTML = "Bienvenue " + nom;
-
-                    // // ajouter les elements à modal et afficher modal
-                    // let modal_body = document.querySelector(".modal-body");
-                    // modal_body.innerHTML = "";
-                    // modal_body.appendChild(p1);
-                    // modal_body.appendChild(img_html);
-                    // modal_body.appendChild(p2);
-                    // myModal.show();
-
                     // ajoutr les informations au tableau JSON
-                    contactStore.add(nom, prenom, dateNaissance, adress, mail);
+                    contactStore.add(nom, prenom, dateNaissance, adresse, mail);
 
                     // Afficher la liste des contacts dans un tableau HTML
                     contactList = contactStore.getList();
                     document.querySelector("table tbody").innerHTML = "";
+                    var key_api = "AIzaSyAkmvI9DazzG9p77IShsz_Di7-5Qn7zkcg";
+                    
                     for (var i in contactList) {
                         var contact = contactList[i];
+                        var img_url = `https://maps.googleapis.com/maps/api/staticmap?markers=${contact.adress}&zoom=14&size=400x300&scale=2&key=${key_api}`;
                         document.querySelector("table tbody").innerHTML =
                             document.querySelector("table tbody").innerHTML +
-                            "<tr><td>" + contact.name + "</td><td>" + contact.firstname + "</td><td>" + contact.date + "</td><td>" + contact.adress + "</td><td>" + contact.mail + "</td></tr>";
+                            "<tr><td>" +
+                            contact.name +
+                            "</td><td>" +
+                            contact.firstname +
+                            "</td><td>" +
+                            contact.date +
+                            "</td><td><a href=\"" + img_url + "\">" +
+                            contact.adress +
+                            "</a></td><td><a href=\"mailto:" + contact.mail + "\">" +
+                            contact.mail +
+                            "</a></td></tr>";
                     }
                 }
             }

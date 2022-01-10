@@ -17,6 +17,8 @@ function getLocation() {
     //document.querySelector("#map").innerHTML = `<img src='${img_url}'>`;
     let src_text = `${img_url}`;
 
+    document.querySelector("#adresse").value = latlon;
+
     // L'image adress vers Google Maps
     let alt_text = "Votre position ici.";
     let img_html = document.createElement("img");
